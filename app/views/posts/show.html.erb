@@ -1,0 +1,17 @@
+<h1><a href="/users/<%=@post.user.id%>"><%= @post.user.name %></a> says:</h1>
+<p><%= @post.content %></p>
+<div>
+  <h2>People who liked this post:</h2>
+  <table>
+    <tr>
+      <th>Alias</th>
+      <th>Name</th>
+    </tr>
+    <% @likes.each do | like | %>
+			<tr>
+			<td><%=like.user.name%></td>
+			<td><%=like.user.alias%></td>
+			</tr>
+		<% end %>
+  </table>
+</div>

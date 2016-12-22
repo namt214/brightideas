@@ -1,0 +1,43 @@
+<h1>Welcome!</h1>
+<% if flash[:errors] %>
+<%= flash[:errors] %>
+<% end %>
+<h1>Log In</h1>
+<form action="/sessions" method="post" role="form">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <p>
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" name="email">
+  </p>
+  <p>
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" name="password">
+  </p>
+  <button type="submit" class="btn btn-default">Log In</button>
+
+</form>
+<h1>Register</h1>
+<form action='/users' method='post'>
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <P>
+    <label for="name">Name:</label>
+    <input id="name" type="text" name="user[name]">
+  </P>
+  <P>
+    <label for="alias">Alias:</label>
+    <input id="alias" type="text" name="user[alias]">
+  </P>
+  <p>
+    <label for="email">Email</label>
+    <input id="email" type="text" name="user[email]">
+  </p>
+  <p>
+    <label for="password">Password</label>
+    <input id="password" type="password" name="user[password]" >
+  </p>
+  <p>
+    <label for="confirm_PW">confirm PW:</label>
+    <input id="confirm_PW" type="confirm_PW" name="user[confirm_PW]">
+  </p>
+  <button type="submit">Register</button>
+</form>

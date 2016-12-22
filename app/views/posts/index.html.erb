@@ -1,0 +1,25 @@
+<h1>Hi <%= @user.name %></h1>
+<form action="/posts" method="post">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<textarea name="content" placeholder="Post something witty here"></textarea>
+	<input type="submit" value="Idea!">
+</form>
+<% @posts.each do |post| %>
+<div>
+  <h4><a href="/users/<%=@user.id%>"><%= post.user.alias %></a> says:</h4>
+		<p><%= post.content %></p>
+		<% if post.user.id == current_user.id %>
+		<form action="/posts/<%=post.id%>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input type="submit" value="Delete">
+		</form>
+		<% end %>
+		<form action="/likes" method="post">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input type="hidden" name="post_id" value="<%=post.id%>">
+			<input type="submit" value="Like">
+		</form>
+		<a href="/posts/<%=post.id%>"><%=post.likes.count%> people</a> like this
+</div>
+<% end %>
