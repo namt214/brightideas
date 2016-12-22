@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   #show page for user
   get '/users/:id' => 'users#show'
   #taking care of post
-  post '/posts' => 'users#create'
   get '/posts' => 'posts#index'
   # get '/posts/:id' => 'posts#index'
   get '/posts/:id' => 'posts#show'

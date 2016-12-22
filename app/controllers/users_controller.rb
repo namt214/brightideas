@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if user.valid?
       user.save
       session[:user_id]= user.id
-      redirect_to "/posts"
+      redirect_to "/users/#{@user.id}"
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to "/"
